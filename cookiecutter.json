@@ -1,10 +1,17 @@
 {
-    "full_name": "Rich Lewis",
-    "email": "opensource@richlew.is",
-    "copyright": "Copyright (c) 2019 {{ cookiecutter.full_name}}",
-    "license": "MIT",
     "project_name": "pyproject",
     "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
     "project_description": "An awesome python project.",
-    "header": "#!/usr/bin/env python\n# -*- coding: utf-8 -*-\n#\n# {{ cookiecutter.copyright }}\n# License: {{ cookiecutter.license }}"
+    "keywords": "test,project",
+    "author_name": "Rich Lewis",
+    "author_email": "opensource@richlew.is",
+    "github_username": "lewisacidic",
+    "license": "MIT",
+    "copyright": "Copyright (c) 2019 {{ cookiecutter.author_name}}",
+    "header": "#!/usr/bin/env python\n# -*- coding: utf-8 -*-\n#\n# {{ cookiecutter.copyright }}\n# License: {{ cookiecutter.license }}",
+    "source_url": "https://github.com/{{ cookiecutter.github_username }}/{{cookiecutter.project_name}}",
+    "project_url": "{{ cookiecutter.source_url }}",
+    "download_url": "{{ cookiecutter.source_url }}/releases",
+    "bugtracker_url": "{{ cookiecutter.source_url }}/issues",
+    "docs_url": "{{ cookiecutter.project_url }}/docs"
 }
