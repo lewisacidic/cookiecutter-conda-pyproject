@@ -1,26 +1,21 @@
 #!/usr/bin/env python
 
-import pathlib
 import subprocess
 
 
-def initialize_git_repo():
+if __name__ == "__main__":
+    # initialize git repo
     subprocess.call(["git", "init"])
     subprocess.call(["git", "add", "*"])
-    msg = """feat(*): scaffold using cookiecutter.
+
+    # add pre-commit hooks
+    for hook in "pre-commit", "commit-msg":
+        subprocess.call(["pre-commit" "install", "--hook-type", hook])
+
+    # initial commit
+    msg = """feat(*): scaffold using cookiecutter
     
     Use https://github.com/lewisacidic/cookiecutter-rich-pyproject
     to scaffold the project.
     """
-    subprocess.call(["git", "commit", "-m", msg])
-
-
-def add_git_hooks():
-    proj_dir = pathlib.Path.cwd().resolve()
-    for hook in "pre-commit", "commit-msg":
-        proj_dir.joinpath(hook).rename(proj_dir.joinpath(".git", "hooks"))
-
-
-if __name__ == "__main__":
-    initialize_git_repo()
-    add_git_hooks()
+    subprocess.call(["git", "commit", "-m", msg, "--no-verify"])
