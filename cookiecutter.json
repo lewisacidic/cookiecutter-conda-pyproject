@@ -1,0 +1,10 @@
+{
+    "full_name": "Rich Lewis",
+    "email": "opensource@richlew.is",
+    "copyright": "Copyright (c) 2019 {{ cookiecutter.full_name}}",
+    "license": "MIT",
+    "project_name": "pyproject",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+    "project_description": "An awesome python project.",
+    "header": "#!/usr/bin/env python\n# -*- coding: utf-8 -*-\n#\n# {{ cookiecutter.copyright }}\n# License: {{ cookiecutter.license }}"
+}
