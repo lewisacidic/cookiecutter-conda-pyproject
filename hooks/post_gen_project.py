@@ -1,16 +1,21 @@
 #!/usr/bin/env python
 
+import os
 import subprocess
+from subprocess import DEVNULL
 
 
 if __name__ == "__main__":
-    # initialize git repo
     subprocess.call(["git", "init"])
-    subprocess.call(["git", "add", "*"])
 
     # add pre-commit hooks
     for hook in "pre-commit", "commit-msg":
-        subprocess.call(["pre-commit" "install", "--hook-type", hook])
+        subprocess.call(["pre-commit", "install", "--hook-type", hook])
+    
+    # run the precommit hooks to fix anything broken
+    subprocess.call(["git", "add", "*"])
+    subprocess.call(["pre-commit", "run", "--all"], stdout=DEVNULL)
+    subprocess.call(["git", "add", "*"])
 
     # initial commit
     msg = """feat(*): scaffold using cookiecutter
@@ -18,4 +23,4 @@ if __name__ == "__main__":
     Use https://github.com/lewisacidic/cookiecutter-rich-pyproject
     to scaffold the project.
     """
-    subprocess.call(["git", "commit", "-m", msg, "--no-verify"])
+    subprocess.call(["git", "commit", "-m", msg])
