@@ -79,6 +79,7 @@ if __name__ == "__main__":
         keywords=keywords,
         license=license_,
         long_description=read_readme(),
+        long_description_content_type="text/markdown",
         name="{{ cookiecutter.project_slug }}",
         packages=find_packages(include="src"),
         package_dir={"": "src"},
