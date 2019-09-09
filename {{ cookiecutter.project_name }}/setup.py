@@ -3,6 +3,7 @@
 
 from setuptools import find_packages
 from setuptools import setup
+from setuptools_scm import get_version  # so conda-build can get version
 
 name = "{{ cookiecutter.project_name }}"
 description = "{{ cookiecutter.project_description }}"
@@ -20,13 +21,13 @@ download_url = "{{ cookiecutter.download_url }}"
 classifiers = [
     "Development Status :: 2 - Pre-Apha",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3 :: Only"
+    "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.7",
     "Natural Language :: English",
 ]
 
 keywords = [{% for kw in cookiecutter.keywords.split(",") %}
-    "{{ kw.strip() }}"{% endfor %}
+    "{{ kw.strip() }}",{% endfor %}
 ]
 
 
@@ -37,7 +38,10 @@ def read_readme():
 
 
 setup_requirements = [
-    "setuptools_scm"
+    "pip",
+    "setuptools",
+    "setuptools_scm",
+    "wheel",
 ]
 
 install_requirements = [
@@ -55,12 +59,12 @@ dev_requirements = [
     "flake8-mutable",
     "flake8-print",
     "pep8-naming",
-    "pre-commit"
+    "pre-commit",
 ]
 
 test_requirements = [
     "pytest",
-    "pytest-cov"
+    "pytest-cov",
 ]
 
 
@@ -91,7 +95,7 @@ if __name__ == "__main__":
         setup_requires=setup_requirements,
         tests_require=test_requirements,
         test_suite="tests",
-        url=docs_url,
-        use_scm_version=True,
-        zip_safe=False
+        url=home_url,
+        version=get_version(),
+        zip_safe=False,
     )
