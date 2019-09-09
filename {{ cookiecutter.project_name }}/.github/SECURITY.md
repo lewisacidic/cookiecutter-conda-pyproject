@@ -12,5 +12,5 @@ Currently supported
 ## Reporting Security Issues
 
 If you believe you have found a security vulnerability in a supported version of {{ cookiecutter.project_name }} according to the table above, please do *not* create an Issue.
-Instead, please contact {{ cookiecutter.author_email }} directly, detailing the problem.
+Instead, please contact `{{ cookiecutter.author_email }}` directly, detailing the problem.
 We will endeavour to respond to these issues within 48 hours.
