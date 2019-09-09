@@ -2,6 +2,14 @@
 
 {{ cookiecutter.project_description }}
 
+
+## Quickstart/Installation
+
+```shell
+pip install {{ cookiecutter.project_slug }}
+```
+
+
 ## Starting up
 
 Create the conda environment:
@@ -11,6 +19,7 @@ conda env create -f envs/dev.yml
 conda activate {{ cookiecutter.project_name }}-dev
 ```
 
+
 ## Format code
 
 Format code by running the pre-commit tasks:
@@ -18,6 +27,7 @@ Format code by running the pre-commit tasks:
 ```shell
 pre-commit run --all
 ```
+
 
 ## Run tests
 
