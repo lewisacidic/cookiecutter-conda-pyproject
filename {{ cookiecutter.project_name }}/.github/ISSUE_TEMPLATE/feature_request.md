@@ -4,7 +4,7 @@ about: Suggest an idea for {{ cookiecutter.project_name }}
 title: 'Feature Request:'
 ---
 
-- [ ] I have checked the [Issue tracker](../../issues) and as far as I can tell, this is not a duplicate issue
+- [ ] I have checked the [Issue tracker](../issues) and as far as I can tell, this is not a duplicate issue
 - [ ] I am using the latest version of {{ cookiecutter.project_name }}
 
 
