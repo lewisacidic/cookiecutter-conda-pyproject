@@ -9,8 +9,8 @@
     "license": ["MIT license", "BSD license", "ISC license", "Apache Software License 2.0", "GNU General Public License v3", "No license"],
     "copyright": "Copyright (c) {% now 'local', '%Y' %}, {{ cookiecutter.author_name }}",
     "header": "#!/usr/bin/env python\n# -*- coding: utf-8 -*-\n#\n# {{ cookiecutter.copyright }}\n# License: {{ cookiecutter.license }}",
-    "source_url": "https://github.com/{{ cookiecutter.github_username }}/{{cookiecutter.project_name}}",
-    "project_url": "{{ cookiecutter.source_url }}",
+    "source_url": "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}",
+    "project_url": "https://{{ cookiecutter.github_username }}.github.io/{{ cookiecutter.project_name }}",
     "download_url": "{{ cookiecutter.source_url }}/releases",
     "bugtracker_url": "{{ cookiecutter.source_url }}/issues",
     "docs_url": "{{ cookiecutter.project_url }}/docs"
