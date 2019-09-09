@@ -24,3 +24,4 @@ if __name__ == "__main__":
     to scaffold the project.
     """
     subprocess.call(["git", "commit", "-m", msg])
+    subprocess.call(["git", "tag", "-s", "0.0.0" "-m" "Initial release"])
