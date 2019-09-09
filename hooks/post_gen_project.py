@@ -1,11 +1,15 @@
 #!/usr/bin/env python
 
-import os
+import pathlib
 import subprocess
 from subprocess import DEVNULL
 
 
 if __name__ == "__main__":
+    proj = pathlib.Path.cwd()
+
+    if "{{ cookiecutter.license }}" == "No license":
+        proj.joinpath("LICENSE").remove()
     subprocess.call(["git", "init"])
 
     # add pre-commit hooks
@@ -24,4 +28,4 @@ if __name__ == "__main__":
     to scaffold the project.
     """
     subprocess.call(["git", "commit", "-m", msg])
-    subprocess.call(["git", "tag", "-s", "0.0.0" "-m" "Initial release"])
+    subprocess.call(["git", "tag", "-s", "0.0.0", "-m", "Initial release"])
