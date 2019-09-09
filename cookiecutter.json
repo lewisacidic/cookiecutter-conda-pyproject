@@ -4,7 +4,7 @@
     "project_description": "An awesome python project.",
     "keywords": "test,project",
     "author_name": "Rich Lewis",
-    "author_email": "opensource@richlew.is",
+    "author_email": "opensource [at] richlew [dot] is",
     "github_username": "lewisacidic",
     "license": ["MIT license", "BSD license", "ISC license", "Apache Software License 2.0", "GNU General Public License v3", "No license"],
     "copyright": "Copyright (c) {% now 'local', '%Y' %}, {{ cookiecutter.author_name }}",
