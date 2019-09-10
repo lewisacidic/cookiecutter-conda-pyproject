@@ -52,14 +52,18 @@ dev_requirements = [
     "ipython",
     "black",
     "rope",
+    "pre-commit",
+]
+
+lint_requirements = [
     "flake8",
+    "flake8-black",
     "flake8-bandit",
     "flake8-bugbear",
     "flake8-builtins",
     "flake8-mutable",
     "flake8-print",
     "pep8-naming",
-    "pre-commit",
 ]
 
 test_requirements = [

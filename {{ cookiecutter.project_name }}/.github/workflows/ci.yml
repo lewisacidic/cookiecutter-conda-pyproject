@@ -1,9 +1,25 @@
-name: Test
+name: Continuous Integration
 on:
   - push
   - pull_request
 
 jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+  steps:
+    - name: Checkout source
+      uses: actions/checkout@v1
+    - name: Set up Python
+      uses: actions/setup-python@1
+      with:
+        python-version: 3.7
+    - name: Update pip
+      run: pip install --upgrade pip
+    - name: Install dependencies
+      run: pip install -e".[lint]"
+    - name: Run linting
+      run: flake8
   test:
     name: ${% raw %}{{ matrix.python-version }}{% endraw %} on {% raw %}${{ matrix.os }}{% endraw %}
     strategy:
@@ -18,9 +34,9 @@ jobs:
     runs-on: ${% raw %}{{ matrix.os }}{% endraw %}
     steps:
       - name: Checkout source
-        uses: actions/checkout@master
+        uses: actions/checkout@v1
       - name: Set up Python
-        uses: actions/setup-python@master
+        uses: actions/setup-python@v1
         with:
           python-version: ${% raw %}{{ matrix.python-version }}{% endraw %}
       - name: Update pip
