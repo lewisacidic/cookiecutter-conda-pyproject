@@ -19,7 +19,7 @@ bugtracker_url = "{{ cookiecutter.bugtracker_url }}"
 download_url = "{{ cookiecutter.download_url }}"
 
 classifiers = [
-    "Development Status :: 2 - Pre-Apha",
+    "Development Status :: 2 - Pre-Alpha",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.7",
