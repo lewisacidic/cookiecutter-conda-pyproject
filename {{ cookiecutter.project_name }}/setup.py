@@ -1,9 +1,14 @@
 {{ cookiecutter.header }}
 """Set up {{ cookiecutter.project_name }}."""
 
+import os
+
 from setuptools import find_packages
 from setuptools import setup
-from setuptools_scm import get_version  # so conda-build can get version
+
+if os.environ.get("CONDA_BUILD_STATE"):
+    try:
+        from setuptools_scm import get_version  # so conda-build can get version
 
 name = "{{ cookiecutter.project_name }}"
 description = "{{ cookiecutter.project_description }}"
@@ -90,7 +95,7 @@ if __name__ == "__main__":
         long_description=read_readme(),
         long_description_content_type="text/markdown",
         name="{{ cookiecutter.project_slug }}",
-        packages=find_packages(include="src"),
+        packages=find_packages("src"),
         package_dir={"": "src"},
         project_urls={
             "Trackers": bugtracker_url,
