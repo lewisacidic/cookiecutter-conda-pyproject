@@ -1,20 +1,23 @@
 name: Release
-
 on:
   release:
     types:
       - published
 
 jobs:
-    - name: Checkout source
-      uses: actions/checkout@v1
-    - name: Set up Python
-      uses: actions/setup-python@1
-      with:
-        python-version: 3.7
-    - name: Build package
-      run: python setup.py sdist bdist_wheel
-    - name: Upload package
-      uses: pypa/gh-action-pypi-publish@master
-      with:
-        password: ${% raw %}{{ secrets.pypi_api_key }}{% endraw %}
+  release:
+    name: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v1
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - name: Build package
+        run: python setup.py sdist bdist_wheel
+      - name: Upload package
+        uses: pypa/gh-action-pypi-publish@master
+        with:
+          password: ${% raw %}{{ secrets.pypi_api_key }}{% endraw %}

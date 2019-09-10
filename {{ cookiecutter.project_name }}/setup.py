@@ -48,13 +48,6 @@ install_requirements = [
     "importlib_metadata; python_version<'3.8'"
 ]
 
-dev_requirements = [
-    "ipython",
-    "black",
-    "rope",
-    "pre-commit",
-]
-
 lint_requirements = [
     "flake8",
     "flake8-black",
@@ -71,6 +64,13 @@ test_requirements = [
     "pytest-cov",
 ]
 
+dev_requirements = [
+    "ipython",
+    "black",
+    "rope",
+    "pre-commit",
+] + lint_requirements + test_requirements
+
 
 if __name__ == "__main__":
     setup(
@@ -80,6 +80,7 @@ if __name__ == "__main__":
         description=description,
         download_url=download_url,
         extras_require={
+            "lint": lint_requirements,
             "dev": dev_requirements,
             "test": test_requirements
         },
