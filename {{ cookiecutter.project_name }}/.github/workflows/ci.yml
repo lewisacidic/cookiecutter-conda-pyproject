@@ -5,7 +5,7 @@ on:
 
 jobs:
   lint:
-    name: Lint
+    name: Lint source code
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source
@@ -21,7 +21,7 @@ jobs:
       - name: Run linting
         run: flake8
   test:
-    name: ${% raw %}{{ matrix.python-version }}{% endraw %} on {% raw %}${{ matrix.os }}{% endraw %}
+    name: Test Python ${% raw %}{{ matrix.python-version }}{% endraw %} on {% raw %}${{ matrix.os }}{% endraw %}
     strategy:
       matrix:
         python-version:
@@ -29,8 +29,8 @@ jobs:
           - 3.7
         os:
           - ubuntu-latest
-          - windows-latest
-          - macOS-latest
+          # - windows-latest
+          # - macOS-latest
     runs-on: ${% raw %}{{ matrix.os }}{% endraw %}
     steps:
       - name: Checkout source
