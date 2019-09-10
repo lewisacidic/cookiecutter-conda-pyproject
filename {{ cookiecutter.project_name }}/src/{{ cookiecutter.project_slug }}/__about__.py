@@ -1,38 +1,55 @@
 {{ cookiecutter.header }}
 """Metadata for {{ cookiecutter.project_name}}."""
-import warnings
 
 try:
-    from importlib.metadata import distribution
-    from importlib.metadata import PackageNotFoundError
+    from ._version import get_versions
+
+    __version__ = get_versions()["version"]
+    del get_versions
 except ImportError:
-    from importlib_metadata import distribution
-    from importlib_metadata import PackageNotFoundError
+    __version__ = None
 
-dist_name = __name__.split(".")[0]
+__distname__ = "{{ cookiecutter.project_name }}"
+__name__ = "{{ cookiecutter.project_slug }}" 
+__description__ = "{{ cookiecutter.project_description }}"
+__license__ = "{{ cookiecutter.license }}"
+__copyright__ = "{{ cookiecutter.copyright }}"
 
-try:
-    dist = distribution(dist_name)
-    metadata = dist.metadata
-except PackageNotFoundError:
-    msg = f"{dist_name} does not appear to be installed correctly."
-    warnings.warn(msg, UserWarning)
-    metadata = {}
+__author__ = "{{ cookiecutter.author_name }}"
+__author_email__ = "{{ cookiecutter.author_email }}"
 
-__title__ = metadata.get("Name", dist_name)
-__description__ = metadata.get("Summary", None)
-__url__ = metadata.get("Home-page", None)
-__version__ = metadata.get("Version", None)
-__author__ = metadata.get("Author", None)
-__author_email__ = metadata.get("Author-email", None)
-__license__ = metadata.get("License", None)
+__url__ = "{{ cookiecutter.project_url }}"
+__docs_url__ = "{{ cookiecutter.docs_url }}"
+__source_url__ = "{{ cookiecutter.source_url }}"
+__bugtracker_url__ = "{{ cookiecutter.bugtracker_url }}"
+__download_url__ = "{{ cookiecutter.download_url }}"
+
+__classifiers__ = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.7",
+    "Natural Language :: English",
+]
+
+__keywords__ = [{% for kw in cookiecutter.keywords.split(",") %}
+    "{{ kw.strip() }}",{% endfor %}
+]
 
 __all__ = [
-    "__title__",
-    "__description__",
-    "__url__",
-    "__version__",
     "__author__",
     "__author_email__",
+    "__bugtracker_url__",
+    "__classifiers__",
+    "__copyright__",
+    "__description__",
+    "__distname__",
+    "__docs_url__",
+    "__download_url__",
+    "__keywords__",
     "__license__",
+    "__name__",
+    "__source_url__",
+    "__url__",
+    "__version__",
 ]

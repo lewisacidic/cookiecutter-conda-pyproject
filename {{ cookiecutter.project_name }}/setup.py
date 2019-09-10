@@ -5,35 +5,10 @@ import os
 
 from setuptools import find_packages
 from setuptools import setup
+import versioneer
 
-if os.environ.get("CONDA_BUILD_STATE"):
-    try:
-        from setuptools_scm import get_version  # so conda-build can get version
 
-name = "{{ cookiecutter.project_name }}"
-description = "{{ cookiecutter.project_description }}"
-license_ = "{{ cookiecutter.license }}"
-
-author = "{{ cookiecutter.author_name }}"
-author_email = "{{ cookiecutter.author_email }}"
-
-home_url = "{{ cookiecutter.project_url }}"
-docs_url = "{{ cookiecutter.docs_url }}"
-source_url = "{{ cookiecutter.source_url }}"
-bugtracker_url = "{{ cookiecutter.bugtracker_url }}"
-download_url = "{{ cookiecutter.download_url }}"
-
-classifiers = [
-    "Development Status :: 2 - Pre-Alpha",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.7",
-    "Natural Language :: English",
-]
-
-keywords = [{% for kw in cookiecutter.keywords.split(",") %}
-    "{{ kw.strip() }}",{% endfor %}
-]
+about = runpy.run_path("src/{{ cookiecutter.project_slug }}/__about__.py")
 
 
 def read_readme():
@@ -45,13 +20,10 @@ def read_readme():
 setup_requirements = [
     "pip",
     "setuptools",
-    "setuptools_scm",
     "wheel",
 ]
 
-install_requirements = [
-    "importlib_metadata; python_version<'3.8'"
-]
+install_requirements = []
 
 lint_requirements = [
     "flake8",
@@ -69,43 +41,39 @@ test_requirements = [
     "pytest-cov",
 ]
 
-dev_requirements = [
-    "ipython",
-    "black",
-    "rope",
-    "pre-commit",
-] + lint_requirements + test_requirements
+dev_requirements = ["ipython", "black", "rope", "pre-commit"]
+dev_requiremets += lint_requirements + test_requirements
 
 
 if __name__ == "__main__":
     setup(
-        author=author,
-        author_email=author_email,
-        classifiers=classifiers,
-        description=description,
-        download_url=download_url,
+        author=about["__author__"],
+        author_email=about["__author_email__"],
+        classifiers=about["__classifiers__"],
+        description=about["__description__"],
+        download_url=about["__download_url__"],
         extras_require={
             "lint": lint_requirements,
             "dev": dev_requirements,
             "test": test_requirements
         },
         install_requires=install_requirements,
-        keywords=keywords,
-        license=license_,
+        keywords=about["__keywords__"],
+        license=about["__license__"],
         long_description=read_readme(),
         long_description_content_type="text/markdown",
-        name="{{ cookiecutter.project_slug }}",
+        name=about["__distname__"],
         packages=find_packages("src"),
         package_dir={"": "src"},
         project_urls={
-            "Trackers": bugtracker_url,
-            "Source": source_url,
-            "Documentation": docs_url
+            "Trackers": about["__bugtracker_url__"],
+            "Source": about["__source_url__"],
+            "Documentation": about["__docs_url__"],
         },
         setup_requires=setup_requirements,
         tests_require=test_requirements,
         test_suite="tests",
-        url=home_url,
+        url=about["__home_url__"],
         version=get_version(),
         zip_safe=False,
     )
