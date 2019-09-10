@@ -49,5 +49,5 @@ def test_with_no_pkg_info(distribution_mock, field):
     with pytest.warns(UserWarning):
         importlib.reload(about)
         importlib.reload(project)
-        target = "{{ cookiecutter.project_name }}" if field == "__title__" else None
+        target = "{{ cookiecutter.project_slug }}" if field == "__title__" else None
         assert getattr(project, field) == target
