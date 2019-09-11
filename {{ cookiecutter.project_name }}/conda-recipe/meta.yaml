@@ -29,7 +29,7 @@ requirements:
     - pytest-cov
 
 about:
-  home: {% raw %}}{{ data["url"] }}{% endraw %}
+  home: {% raw %}{{ data["url"] }}{% endraw %}
   license: {% raw %}{{ data["license"] }}{% endraw %}
   license_file: LICENSE
   summary: {% raw %}{{ data["description"] }}{% endraw %}
