@@ -8,6 +8,9 @@ from subprocess import DEVNULL
 if __name__ == "__main__":
     proj = pathlib.Path.cwd()
 
+    attrpath = proj.joinpath(".gitattributes")
+    attrpath.write_text("src/{{ cookiecutter.project_slug }}/_version.py export-subst")
+
     if "{{ cookiecutter.license }}" == "No license":
         proj.joinpath("LICENSE").remove()
     subprocess.call(["git", "init"])
