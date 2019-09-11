@@ -10,7 +10,7 @@ except ImportError:
     __version__ = None
 
 __distname__ = "{{ cookiecutter.project_name }}"
-__name__ = "{{ cookiecutter.project_slug }}" 
+__name__ = "{{ cookiecutter.project_slug }}"
 __description__ = "{{ cookiecutter.project_description }}"
 __license__ = "{{ cookiecutter.license }}"
 __copyright__ = "{{ cookiecutter.copyright }}"
