@@ -39,6 +39,7 @@ lint_requirements = [
 test_requirements = [
     "pytest",
     "pytest-cov",
+    "importlib_metadata; pythonr_version<'3.8'"
 ]
 
 dev_requirements = ["ipython", "black", "rope", "pre-commit"]
