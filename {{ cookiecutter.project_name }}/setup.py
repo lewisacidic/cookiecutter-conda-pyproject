@@ -1,7 +1,7 @@
 {{ cookiecutter.header }}
 """Set up {{ cookiecutter.project_name }}."""
 
-import os
+import runpy
 
 from setuptools import find_packages
 from setuptools import setup
@@ -43,7 +43,7 @@ test_requirements = [
 ]
 
 dev_requirements = ["ipython", "black", "rope", "pre-commit"]
-dev_requiremets += lint_requirements + test_requirements
+dev_requirements += lint_requirements + test_requirements
 
 
 if __name__ == "__main__":
@@ -75,6 +75,6 @@ if __name__ == "__main__":
         tests_require=test_requirements,
         test_suite="tests",
         url=about["__home_url__"],
-        version=get_version(),
+        version=versioneer.get_version(),
         zip_safe=False,
     )
