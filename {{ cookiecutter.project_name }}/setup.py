@@ -17,11 +17,7 @@ def read_readme():
         return readme.read()
 
 
-setup_requirements = [
-    "pip",
-    "setuptools",
-    "wheel",
-]
+setup_requirements = ["pip", "setuptools", "wheel"]
 
 install_requirements = []
 
@@ -36,14 +32,11 @@ lint_requirements = [
     "pep8-naming",
 ]
 
-test_requirements = [
-    "pytest",
-    "pytest-cov",
-    "importlib_metadata; pythonr_version<'3.8'"
-]
+test_requirements = ["pytest", "pytest-cov", "importlib_metadata; python_version<'3.8'"]
 
-dev_requirements = ["ipython", "black", "rope", "pre-commit"]
-dev_requirements += lint_requirements + test_requirements
+dev_requirements = (
+    ["ipython", "black", "rope", "pre-commit"] + lint_requirements + test_requirements
+)
 
 
 if __name__ == "__main__":
@@ -51,12 +44,13 @@ if __name__ == "__main__":
         author=about["__author__"],
         author_email=about["__author_email__"],
         classifiers=about["__classifiers__"],
+        cmdclass=versioneer.get_cmdclass(),
         description=about["__description__"],
         download_url=about["__download_url__"],
         extras_require={
             "lint": lint_requirements,
             "dev": dev_requirements,
-            "test": test_requirements
+            "test": test_requirements,
         },
         install_requires=install_requirements,
         keywords=about["__keywords__"],
@@ -74,7 +68,7 @@ if __name__ == "__main__":
         setup_requires=setup_requirements,
         tests_require=test_requirements,
         test_suite="tests",
-        url=about["__home_url__"],
+        url=about["__url__"],
         version=versioneer.get_version(),
         zip_safe=False,
     )
