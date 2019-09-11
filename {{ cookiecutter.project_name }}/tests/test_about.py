@@ -12,9 +12,10 @@ except ModuleNotFoundError:
 root = importlib.import_module("{{ cookiecutter.project_slug }}")
 
 
-@pytest.parametrize("field", ["distname", "name", "author", "author_email", "copyright", "license", "name", "url", "version"])
+@pytest.parametrize("field", ["distname", "name", "copyright", "license", "name", "url", "version"])
 def test_metadata(field):
+    """Test metadata is available on base package"""
     importlib.reload(root)
-    assert getattr(root, field) is not None
+    assert getattr(root, f"__{field}__") is not None
 
 
