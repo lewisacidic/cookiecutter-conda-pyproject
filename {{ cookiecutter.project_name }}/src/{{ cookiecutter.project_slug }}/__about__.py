@@ -1,6 +1,7 @@
 {{ cookiecutter.header }}
 """Metadata for {{ cookiecutter.project_name}}."""
 
+# guard import as this is exec'd with runpy in setup.py so import will fail
 try:
     from ._version import get_versions
 
