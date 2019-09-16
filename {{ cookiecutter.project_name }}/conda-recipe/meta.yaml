@@ -15,14 +15,11 @@ build:
 requirements:
   build:
     - python
-    - pip
     - setuptools
     - wheel
-    - setuptools_scm
 
   run:
     - python
-    - importlib_metadata
   
   test:
     - pytest
