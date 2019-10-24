@@ -3,7 +3,6 @@
 {{ cookiecutter.project_description }}
 
 
-
 ## Installation
 
 ```shell
