@@ -1,0 +1,2 @@
+# Default file owners
+* @{{ cookiecutter.github_username }}
