@@ -12,7 +12,7 @@ if __name__ == "__main__":
     attrpath.write_text("src/{{ cookiecutter.project_slug }}/_version.py export-subst")
 
     if "{{ cookiecutter.license }}" == "No license":
-        proj.joinpath("LICENSE").remove()
+        proj.joinpath("LICENSE").unlink()
     subprocess.call(["git", "init"])
 
     # add pre-commit hooks
