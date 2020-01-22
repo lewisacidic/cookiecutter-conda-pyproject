@@ -29,3 +29,7 @@ about:
   summary: {% raw %}{{ data["description"] }}{% endraw %}
   doc_url: {% raw %}{{ data["project_urls"]["Documentation"] }}{% endraw %}
   dev_url: {% raw %}{{ data["project_urls"]["Source"] }}{% endraw %}
+
+extra:
+  recipe-maintainers:
+    - {{ cookiecutter.author_name }} <{{ cookiecutter.author_email }}>
