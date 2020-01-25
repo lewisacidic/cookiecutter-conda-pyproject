@@ -8,6 +8,8 @@ source:
   path: ../
 
 build:
+  number: 0
+  noarch: python
   script: {% raw %}{{ PYTHON }}{% endraw %} -m pip install . -vv
 
 requirements:
