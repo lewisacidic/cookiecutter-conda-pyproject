@@ -19,10 +19,10 @@ import {{ cookiecutter.project_slug }}
 
 ## Development
 
-Create the conda environment:
+Create the development conda environment:
 
 ```shell
-conda env create -f envs/dev.yml
+conda env create -n {{ cookiecutter.project_name }}-dev -f envs/dev.yml -f envs/prod.yml envs/test.yml -f envs/self.yml
 conda activate {{ cookiecutter.project_name }}-dev
 ```
 
@@ -37,3 +37,11 @@ Run the tests with pytest:
 ```shell
 pytest
 ```
+
+Build the production testing environment:
+
+```shell
+conda env create -n {{ cookiecutter.project_name }}-prod -f envs/prod.yml -f envs/self.yml
+conda activate {{ cookiecutter.project_name }}-prod
+```
+
