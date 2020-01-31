@@ -26,8 +26,8 @@ requirements:
 
 about:
   home: {% raw %}{{ data["url"] }}{% endraw %}
-  license: {% raw %}{{ data["license"] }}{% endraw %}
-  license_file: LICENSE
+  license: {% raw %}{{ data["license"] }}{% endraw %}{% if cookiecutter.license != "No license" %}
+  license_file: LICENSE{% endif %}
   summary: {% raw %}{{ data["description"] }}{% endraw %}
   doc_url: {% raw %}{{ data["project_urls"]["Documentation"] }}{% endraw %}
   dev_url: {% raw %}{{ data["project_urls"]["Source"] }}{% endraw %}
