@@ -1,14 +1,22 @@
-version: "3.6"
+version: "3.7"
+
+x-settings: &x-settings
+  build: .
+  restart: unless-stopped
+  image: {{ cookiecutter.project_name }}
+  volumes:
+    - .:/app
+  environment:
+    ENV: development
 
 services:
-  app:
-    build:
-      context: .
-      target: development
-    restart: unless-stopped
-    image: {{ cookiecutter.project_name }}
-    volumes:
-      - .:/app
-    environment:
-      ENV: development
+  dev:
+    <<: *x-settings
 
+  ipython:
+    <<: *x-settings
+    command: ["ipython"]
+
+  invoke:
+    <<: *x-settings
+    entrypoint: ["invoke"]
