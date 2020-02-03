@@ -12,4 +12,8 @@ A cookiecutter for a python project with a biased selection of best practices.
 - pytest configured
 - conda development env and recipe
 - docker setup
+<<<<<<< Updated upstream
 - invoke tasks
+=======
+
+>>>>>>> Stashed changes

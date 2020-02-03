@@ -1,2 +1,2 @@
 github:
-  - {{ cookiecutter.github_username }}
+  - {{ cookiecutter.vcs_username }}

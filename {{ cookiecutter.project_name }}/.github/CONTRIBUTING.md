@@ -8,7 +8,7 @@ Please note that we have a [code of conduct](#code-of-conduct); please follow it
 
 ## Bug reports and feature requests
 
-The project uses the GitHub Issue Tracker](../issues) to track all bugs and feature requests; feel free to open an issue if you think you have found a bug or have an idea for a new feature.
+The project uses the [GitHub issue tracker](../issues) to track all bugs and feature requests; feel free to open an issue if you think you have found a bug or have an idea for a new feature.
 Before you do, however, please attempt to check that the issue is not currently being addressed by another in the issue tracker.
 If you are making a bug report, please read the next section.
 
