@@ -23,6 +23,7 @@ dependencies:
       - flake8-logging-format==0.6.0
       - flake8-print==3.1.4
       - reorder-python-imports==1.9.0
+      - jinja2-cli==0.7.0
   - pre-commit==2.0.1
   - pytest==5.3.4
   - pytest-cov==2.8.1
