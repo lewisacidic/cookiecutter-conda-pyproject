@@ -59,7 +59,23 @@ def clean(
 
 
 @task
+def test(ctx):
+    """Run the project tests."""
+    ctx.run("pytest")
+
+
+@task
 def build(ctx, conda=True):
     """Build a source and wheel distribution."""
     ctx.run("python setup.py build sdist bdist_wheel")
     ctx.run("conda build .")
+
+
+@task
+def new(ctx, path, module=True, package=False):
+    """Create new source files."""
+    if module: 
+        ctx.run(f"jinja2 templates/module.py.tmpl {path}.py")
+    if package:
+        ctx.run(f"mkdir -p {path}")
+        ctx.run(f"jinja2 templates/module.py.tmpl {path}/__init__.py")
