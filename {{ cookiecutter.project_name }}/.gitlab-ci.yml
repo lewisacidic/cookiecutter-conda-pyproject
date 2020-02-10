@@ -1,0 +1,20 @@
+image: continuumio/miniconda3:latest
+
+lint:
+    stage: .pre
+    script:
+        - invoke lint
+
+test:
+    stage: test
+    script:
+        - invoke test
+
+build:
+    stage: build
+    script:
+        - conda install conda-build conda-verify
+        - conda build .
+    only:
+        - tags
+        - triggers
