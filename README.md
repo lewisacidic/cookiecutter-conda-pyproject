@@ -1,6 +1,6 @@
-# cookiecutter-rich-pyproject
+# cookiecutter-conda-pyproject
 
-A cookiecutter for a python project with a biased selection of best practices.
+A cookiecutter for a conda-based python project with a biased selection of best practices.
 
 
 # Features
@@ -12,8 +12,5 @@ A cookiecutter for a python project with a biased selection of best practices.
 - pytest configured
 - conda development env and recipe
 - docker setup
-<<<<<<< Updated upstream
 - invoke tasks
-=======
 
->>>>>>> Stashed changes
