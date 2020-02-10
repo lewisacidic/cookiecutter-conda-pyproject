@@ -1,4 +1,16 @@
-{{ cookiecutter.header }}
+{% set _trove_lookup = {
+    "MIT": "License :: OSI Approved :: MIT License",
+    "BSD-2-Clause": "License :: OSI Approved :: BSD License",
+    "BSD-3-Clause": "License :: OSI Approved :: BSD License",
+    "Apache-2.0": "License :: OSI Approved :: Apache Software License",
+    "GPL-2.0": "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
+    "GPL-3.0": "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "LGPL-2.1": "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
+    "LGPL-3.0": "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
+    "ISC": "License :: OSI Approved :: ISC License (ISCL)",
+    "GNU General Public License v3": "GNU General Public License v3 (GPLv3)",
+    "No license": "License :: Other/Proprietary License"
+}%}{{ cookiecutter.header }}
 """Metadata for {{ cookiecutter.project_name}}."""
 
 # guard import as this is exec'd with runpy in setup.py so import will fail
@@ -30,7 +42,8 @@ __classifiers__ = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.7",
-    "Natural Language :: English",
+    "Natural Language :: English",{% if cookiecutter.license != "No license" %}
+    "{{ _trove_lookup[cookiecutter.license] }}"{% endif %}
 ]
 
 __keywords__ = [{% for kw in cookiecutter.keywords.split(",") %}
