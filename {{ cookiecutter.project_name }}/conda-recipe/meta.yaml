@@ -8,8 +8,8 @@ source:
   path: ../
 
 build:
-  number: 0
   noarch: python
+  number: 0
   script: {% raw %}{{ PYTHON }}{% endraw %} -m pip install . -vv
 
 requirements:
@@ -18,11 +18,20 @@ requirements:
     - pip
 
   run:
-    - python
+  {% for package in resolved_packages("host") %}
+    - {{ package }}
+  {% endfor %}
   
+test:
+  commands:
+    - pytest -m "not srconly"
+  imports:
+    - {{ cookiecutter.project_slug }}
+    - {{ cookiecutter.project_slug }}.__about__
   test:
     - pytest
     - pytest-cov
+
 
 about:
   home: {% raw %}{{ data["url"] }}{% endraw %}

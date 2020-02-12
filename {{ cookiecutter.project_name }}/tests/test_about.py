@@ -30,6 +30,7 @@ def test_metadata(base_pkg, field, value):
     assert getattr(base_pkg, f"__{field}__") is not None
 
 
+@pytest.mark.srconly
 def test_version(base_pkg):
     """Test the version is correctly detected with versioneer."""
     # get version using versioneer.py script 
@@ -39,6 +40,7 @@ def test_version(base_pkg):
     assert base_pkg.__version__ == version
 
 
+@pytest.mark.srconly
 def test_import_fails():
     """Test behaviour if import fails."""
     # if we run __about__ as a script with runpy, imports will fail
