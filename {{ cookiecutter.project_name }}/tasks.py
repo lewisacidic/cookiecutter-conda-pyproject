@@ -1,6 +1,10 @@
 {{ cookiecutter.header }}
 """Invoke tasks."""
+import sys
+
 from invoke import task
+import semver
+import versioneer
 
 
 @task(help={"python": "whether to lint `.py` files", "all": "run on all files"})
@@ -65,13 +69,6 @@ def test(ctx):
 
 
 @task
-def build(ctx, conda=True):
-    """Build a source and wheel distribution."""
-    ctx.run("python setup.py build sdist bdist_wheel")
-    ctx.run("conda build .")
-
-
-@task
 def new(ctx, path, module=True, package=False):
     """Create new source files."""
     if module: 
@@ -79,3 +76,26 @@ def new(ctx, path, module=True, package=False):
     if package:
         ctx.run(f"mkdir -p {path}")
         ctx.run(f"jinja2 templates/module.py.tmpl {path}/__init__.py")
+
+
+@task
+def version(ctx, kind):
+    """Bump the project version."""
+
+    version_info = versioneer.get_versions()
+
+    if version_info["dirty"]:
+        print("Git working directory not clean.\n")
+        ctx.run("git status -s")
+        print("\nPlease commit changes or stash them before creating a release.")
+        sys.exit(1)
+
+    ver = semver.parse_version_info(version_info["version"])
+    try:
+        ver = getattr(ver, f"bump_{kind}")()
+    except AttributeError:
+        print(f"{kind} is not a valid semver versioning level.")
+        sys.exit(1)
+
+    ctx.run(f'git commit --no-verify --allow-empty -m"chore: bump version to {ver}"')
+    ctx.run(f"git tag v{ver}")

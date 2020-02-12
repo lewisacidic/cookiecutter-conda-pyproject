@@ -17,11 +17,13 @@ dependencies:
   - pep8-naming==0.8.2
   - pip==20.0.2
   - pip:
+      - flake8-2020==1.5.0
       - flake8-bandit==2.1.2
       - flake8-bugbear==20.1.2
       - flake8-debugger==3.2.1
       - flake8-logging-format==0.6.0
       - flake8-print==3.1.4
+      - flake8-typing-imports==1.5.1
       - reorder-python-imports==1.9.0
       - jinja2-cli==0.7.0
   - pre-commit==2.0.1
@@ -29,4 +31,5 @@ dependencies:
   - pytest-cov==2.8.1
   - python==3.7.5
   - rope==0.16.0
+  - semver==2.9.0
   - twine==3.1.1
