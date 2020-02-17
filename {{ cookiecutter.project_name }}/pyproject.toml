@@ -1,5 +1,21 @@
 [build-system]
-requires = ["setuptools>=30.3.0", "wheel", "setuptools_scm"]
+requires = ["setuptools>=30.3.0", "wheel"]
 
 [tool.black]
 line-length = 88
+
+[tool.coverage]
+  [tool.coverage.run]
+  omit = ["versioneer.py", "src/{{ cookiecutter.project_slug }}/_version.py"]
+
+  [tool.coverage.report]
+  exclude_lines = [
+    # re-enable the standard pragma
+    "pragma: no cover",
+
+    # don't count debug-only code
+    "def __repr__",
+
+    # don't count module executable code
+    "if __name__ == [\"']__main__[\"']:"
+    ]
