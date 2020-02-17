@@ -5,10 +5,10 @@ LABEL maintainer="{{ cookiecutter.author_name }} <{{ cookiecutter.author_email }
 RUN mkdir /app
 WORKDIR /app
 
-COPY envs /app/envs
+COPY env.yml .
 RUN conda env update -n base -f env.yml && conda clean --all -f -y
 
-COPY . /app
+COPY . .
 RUN python -m pip install -e. --no-deps --ignore-installed
 
 CMD ["bash"]
