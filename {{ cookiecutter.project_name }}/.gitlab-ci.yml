@@ -1,20 +1,35 @@
-image: continuumio/miniconda3:latest
+image: {{ cookiecutter.docker_base_image }}
 
 lint:
-    stage: .pre
-    script:
-        - invoke lint
-
-test:
-    stage: test
-    script:
-        - invoke test
+  stage: .pre
+  script:
+    - conda info
+    - conda env update -n base -f environment.yml
+    - invoke lint
 
 build:
-    stage: build
-    script:
-        - conda install conda-build conda-verify
-        - conda build .
-    only:
-        - tags
-        - triggers
+  stage: build
+  script:
+    - conda info
+    - conda install conda-build conda-verify
+    - conda build .
+  artifacts:
+    paths:
+      - dist/conda/noarch/*.tar.bz2
+  only:
+    - tags
+    - triggers
+
+test:
+  stage: test
+  script:
+    - invoke test
+
+deploy:
+  stage: deploy
+  script:
+    - conda install anaconda-client
+    - anaconda -t $CONDA_UPLOAD_TOKEN upload dist/conda/noarch/*.tar.bz2
+  only:
+    - tags
+
