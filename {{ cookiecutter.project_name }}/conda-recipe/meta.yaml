@@ -21,17 +21,18 @@ requirements:
   {% for package in resolved_packages("host") %}
     - {{ package }}
   {% endfor %}
-  
+
 test:
   commands:
     - pytest -m "not srconly"
   imports:
     - {{ cookiecutter.project_slug }}
     - {{ cookiecutter.project_slug }}.__about__
-  test:
+  source_files:
+    - tests/
+  requires:
     - pytest
     - pytest-cov
-
 
 about:
   home: {% raw %}{{ data["url"] }}{% endraw %}
@@ -42,5 +43,5 @@ about:
   dev_url: {% raw %}{{ data["project_urls"]["Source"] }}{% endraw %}
 
 extra:
-  recipe-maintainers:
+  maintainers:
     - {{ cookiecutter.author_name }} <{{ cookiecutter.author_email }}>
