@@ -71,7 +71,7 @@ def test(ctx):
 @task
 def new(ctx, path, module=True, package=False):
     """Create new source files."""
-    if module: 
+    if module:
         ctx.run(f"jinja2 templates/module.py.tmpl {path}.py")
     if package:
         ctx.run(f"mkdir -p {path}")
