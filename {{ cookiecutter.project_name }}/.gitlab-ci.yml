@@ -4,7 +4,7 @@ lint:
   stage: .pre
   script:
     - conda info
-    - conda env update -n base -f environment.yml
+    - conda env update -n base -f env.yml
     - invoke lint
 
 build:
@@ -32,4 +32,5 @@ deploy:
     - anaconda -t $CONDA_UPLOAD_TOKEN upload dist/conda/noarch/*.tar.bz2
   only:
     - tags
+    - triggers
 
