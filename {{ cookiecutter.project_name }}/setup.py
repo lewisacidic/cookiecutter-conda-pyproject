@@ -2,6 +2,7 @@
 """Set up {{ cookiecutter.project_name }}."""
 
 import runpy
+import pathlib
 
 from setuptools import find_packages
 from setuptools import setup
@@ -38,6 +39,8 @@ dev_requirements = (
     ["ipython", "black", "rope", "pre-commit"] + lint_requirements + test_requirements
 )
 
+modules = [p.stem for p in pathlib.Path("src").glob("*.py")]
+
 
 if __name__ == "__main__":
     setup(
@@ -65,6 +68,7 @@ if __name__ == "__main__":
             "Source": about["__source_url__"],
             "Documentation": about["__docs_url__"],
         },
+        py_modules=py_modules,
         setup_requires=setup_requirements,
         tests_require=test_requirements,
         test_suite="tests",
