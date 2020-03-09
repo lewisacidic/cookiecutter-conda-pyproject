@@ -18,9 +18,9 @@ requirements:
     - pip
 
   run:
-  {% for package in resolved_packages("host") %}
+  {% raw %}{% for package in resolved_packages("host") %}
     - {{ package }}
-  {% endfor %}
+  {% endfor %}{% endraw %}
 
 test:
   commands:
