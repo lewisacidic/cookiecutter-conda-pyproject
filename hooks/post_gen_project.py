@@ -1,4 +1,7 @@
-#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+# Copyright (c) 2020 Rich Lewis
+# License: MIT
 
 import pathlib
 import shutil
