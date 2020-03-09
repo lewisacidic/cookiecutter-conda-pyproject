@@ -39,7 +39,7 @@ dev_requirements = (
     ["ipython", "black", "rope", "pre-commit"] + lint_requirements + test_requirements
 )
 
-modules = [p.stem for p in pathlib.Path("src").glob("*.py")]
+py_modules = [p.stem for p in pathlib.Path("src").glob("*.py")]
 
 
 if __name__ == "__main__":
