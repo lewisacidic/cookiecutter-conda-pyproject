@@ -23,3 +23,6 @@ exclude_lines = [
   "if logger\.isEnabledFor",
   "if __name__ == [\"']__main__[\"']:" # no module excecutable code
 ]
+
+[tool.isort]
+force_single_line = true
