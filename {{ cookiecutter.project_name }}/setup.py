@@ -1,8 +1,8 @@
 {{ cookiecutter.header }}
 """Set up {{ cookiecutter.project_name }}."""
-
 import runpy
 import pathlib
+from typing import List
 
 from setuptools import find_packages
 from setuptools import setup
@@ -12,17 +12,17 @@ import versioneer
 about = runpy.run_path("src/{{ cookiecutter.project_slug }}/__about__.py")
 
 
-def read_readme():
+def read_readme() -> str:
     """Load the project README."""
     with open("README.md") as readme:
         return readme.read()
 
 
-setup_requirements = ["pip", "setuptools", "wheel"]
+setup_requirements: List[str] = ["pip", "setuptools", "wheel"]
 
-install_requirements = []
+install_requirements: List[str] = []
 
-lint_requirements = [
+lint_requirements: List[str] = [
     "flake8",
     "flake8-black",
     "flake8-bandit",
@@ -33,13 +33,13 @@ lint_requirements = [
     "pep8-naming",
 ]
 
-test_requirements = ["pytest", "pytest-cov"]
+test_requirements: List[str] = ["pytest", "pytest-cov"]
 
-dev_requirements = (
+dev_requirements: List[str] = (
     ["ipython", "black", "rope", "pre-commit"] + lint_requirements + test_requirements
 )
 
-py_modules = [path.stem for path in pathlib.Path("src").glob("*.py")]
+py_modules: List[str] = [path.stem for path in pathlib.Path("src").glob("*.py")]
 
 
 if __name__ == "__main__":
