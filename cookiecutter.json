@@ -8,7 +8,7 @@
     "copyright_holder": "{{ cookiecutter.author_name }}",
     "vcs_remote_type": ["github", "gitlab"],
     "vcs_username": "lewisacidic",
-    "docker_base_image": "continuumio/miniconda3:latest",
+    "docker_base_image": "continuumio/miniconda3:4.7.12",
     "license": ["MIT", "BSD-2-Clause", "BSD-3-Clause", "Apache-2.0", "GPL-2.0", "GPL-3.0", "LGPL-2.1", "LGPL-3.0", "ISC", "No license"],
     "copyright": "Copyright (c) {% now 'local', '%Y' %} {{ cookiecutter.copyright_holder }}",
     "header": "# -*- coding: utf-8 -*-\n#\n# {{ cookiecutter.copyright }}\n# {{ cookiecutter.license + ('' if cookiecutter.license == 'No license' else ' license') }}",
