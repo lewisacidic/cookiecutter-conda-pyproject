@@ -15,10 +15,9 @@
 
 # guard import as this is exec'd with runpy in setup.py so import will fail
 try:
-    from ._version import get_versions
+    from ._version import get_versions  # noqa: WPS433,WPS436
 
     __version__ = get_versions()["version"]
-    del get_versions
 except ImportError:
     __version__ = None
 

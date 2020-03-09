@@ -89,16 +89,16 @@ def version(ctx, kind):
         ctx.run("git status -s")
         print("\nPlease commit changes or stash them before creating a release.")
         sys.exit(1)
-    v = version_info["version"].lstrip("v").split("+")[0]
-    v = semver.parse_version_info(v)
+    ver = version_info["version"].lstrip("v").split("+")[0]
+    ver = semver.parse_version_info(ver)
     try:
-        new_v = getattr(v, f"bump_{kind}")()
+        new_v = getattr(ver, f"bump_{kind}")()
     except AttributeError:
         print(f"{kind} is not a valid semver versioning level.")
         sys.exit(1)
 
     ctx.run(
-        f'git commit --no-verify --allow-empty -m"chore: bump version {v} → {new_v}"'
+        f'git commit --no-verify --allow-empty -m"chore: bump version {ver} → {new_v}"'
     )
     ctx.run(f'git tag -as -m"Release {new_v}" v{new_v}')
 

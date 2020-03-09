@@ -14,8 +14,8 @@ BASEDIR = pathlib.Path(__file__).parents[1]
 @pytest.fixture
 def base_pkg():
     """Provide a reloaded base package as a fixture."""
-    base_pkg = importlib.import_module("{{ cookiecutter.project_slug }}")
-    return importlib.reload(base_pkg)
+    pkg = importlib.import_module("{{ cookiecutter.project_slug }}")
+    return importlib.reload(pkg)
 
 
 @pytest.mark.parametrize(["field", "value"], [
@@ -37,7 +37,7 @@ def test_version(base_pkg):
     versioneer_path = str(BASEDIR.joinpath("versioneer.py"))
     versioneer = runpy.run_path(versioneer_path)
     version = versioneer["get_version"]()
-    assert base_pkg.__version__ == version
+    assert base_pkg.__version__ == version  # noqa: WPS609
 
 
 @pytest.mark.srconly

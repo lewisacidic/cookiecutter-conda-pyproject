@@ -11,7 +11,7 @@
     "docker_base_image": "continuumio/miniconda3:latest",
     "license": ["MIT", "BSD-2-Clause", "BSD-3-Clause", "Apache-2.0", "GPL-2.0", "GPL-3.0", "LGPL-2.1", "LGPL-3.0", "ISC", "No license"],
     "copyright": "Copyright (c) {% now 'local', '%Y' %} {{ cookiecutter.copyright_holder }}",
-    "header": "# -*- coding: utf-8 -*-\n#\n# {{ cookiecutter.copyright }}\n# License: {{ cookiecutter.license }}",
+    "header": "# -*- coding: utf-8 -*-\n#\n# {{ cookiecutter.copyright }}\n# {{ cookiecutter.license + ('' if cookiecutter.license == 'No license' else ' license') }}",
     "source_url": "https://{{ cookiecutter.vcs_remote_type }}.com/{{ cookiecutter.vcs_username }}/{{ cookiecutter.project_name }}",
     "project_url": "https://{{ cookiecutter.vcs_username }}.{{ cookiecutter.vcs_remote_type }}.io/{{ cookiecutter.project_name }}",
     "download_url": "{{ cookiecutter.source_url }}/releases",
