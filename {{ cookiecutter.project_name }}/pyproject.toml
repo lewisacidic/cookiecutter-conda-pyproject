@@ -20,7 +20,7 @@ exclude_lines = [
   "if self.debug",
   "raise AssertionError",
   "raise NotImplementedError",
-  "if logger\.isEnabledFor",
+  "if logger.isEnabledFor",
   "if __name__ == [\"']__main__[\"']:" # no module excecutable code
 ]
 
