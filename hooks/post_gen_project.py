@@ -28,6 +28,7 @@ if __name__ == "__main__":
     # remove config for other vcs type
     if "{{ cookiecutter.vcs_remote_type}}" == "github":
         shutil.rmtree(proj.joinpath(".gitlab"))
+        proj.joinpath(".gitlab-ci.yml").unlink()
     elif "{{ cookiecutter.vcs_remote_type}}" == "gitlab":
         shutil.rmtree(proj.joinpath(".github"))
 
