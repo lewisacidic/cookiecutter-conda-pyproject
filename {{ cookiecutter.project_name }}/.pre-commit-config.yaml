@@ -33,7 +33,6 @@ repos:
         additional_dependencies:
           - cohesion==1.0.0
           - flake8-2020==1.5.0
-          - flake8-blind-except==0.1.1
           - flake8-copyright==0.2.2
           - git+https://github.com/wemake-services/wemake-python-styleguide
   - repo: https://github.com/pre-commit/mirrors-mypy
