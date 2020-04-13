@@ -1,8 +1,7 @@
 {{ cookiecutter.header }}
 """Set up {{ cookiecutter.project_name }}."""
+
 import runpy
-import pathlib
-from typing import List
 
 from setuptools import find_packages
 from setuptools import setup
@@ -12,35 +11,28 @@ import versioneer
 about = runpy.run_path("src/{{ cookiecutter.project_slug }}/__about__.py")
 
 
-def read_readme() -> str:
+def read_readme():
     """Load the project README."""
     with open("README.md") as readme:
         return readme.read()
 
 
-setup_requirements: List[str] = ["pip", "setuptools", "wheel"]
+setup_requirements = ["pip", "setuptools", "wheel"]
 
-install_requirements: List[str] = []
+install_requirements = []
 
-lint_requirements: List[str] = [
+lint_requirements = [
+    "cohesion",
     "flake8",
-    "flake8-black",
-    "flake8-bandit",
-    "flake8-bugbear",
-    "flake8-builtins",
-    "flake8-mutable",
-    "flake8-print",
-    "pep8-naming",
+    "flake8-2020",
+    "flake8-copyright",
+    "wemake-python-styleguide"
 ]
 
-test_requirements: List[str] = ["pytest", "pytest-cov"]
+test_requirements = ["pytest", "pytest-cov"]
 
-dev_requirements: List[str] = (
-    ["ipython", "black", "rope", "pre-commit"] + lint_requirements + test_requirements
-)
-
-py_modules: List[str] = [path.stem for path in pathlib.Path("src").glob("*.py")]
-
+dev_requirements = ["ipython", "invoke", "isort", "black", "rope", "pre-commit"]
+dev_requirements += lint_requirements + test_requirements
 
 if __name__ == "__main__":
     setup(
@@ -68,7 +60,6 @@ if __name__ == "__main__":
             "Source": about["__source_url__"],
             "Documentation": about["__docs_url__"],
         },
-        py_modules=py_modules,
         setup_requires=setup_requirements,
         tests_require=test_requirements,
         test_suite="tests",
