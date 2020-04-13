@@ -1,4 +1,4 @@
-{{ cookiecutter.header }}
+{{cookiecutter.header}}
 """Set up {{ cookiecutter.project_name }}."""
 
 import runpy
@@ -26,12 +26,20 @@ lint_requirements = [
     "flake8",
     "flake8-2020",
     "flake8-copyright",
-    "wemake-python-styleguide"
+    "wemake-python-styleguide",
 ]
 
 test_requirements = ["pytest", "pytest-cov"]
 
-dev_requirements = ["ipython", "invoke", "isort", "black", "rope", "pre-commit"]
+dev_requirements = [
+    "ipython",
+    "invoke",
+    "isort",
+    "black",
+    "rope",
+    "pre-commit",
+    "mypy",
+]
 dev_requirements += lint_requirements + test_requirements
 
 if __name__ == "__main__":
